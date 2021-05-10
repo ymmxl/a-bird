@@ -1,3 +1,4 @@
+#!/bin/bash
 creatos(){
 	read -e -p "project name: " pname
 	#create project
