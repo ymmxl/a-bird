@@ -2,12 +2,14 @@
 creatos(){
 	read -e -p "project name: " pname
 	#create project
-	#gcloud projects create $pname
+	gcloud projects create $pname
 	#get project number
 	pnum=$(gcloud projects list --filter="${pname}" --format="value(PROJECT_NUMBER)")
 	#link billing
 	accid=$(gcloud alpha billing accounts list --format="value(ACCOUNT_ID)")
 	gcloud alpha billing projects link $pname  --billing-account $accid
+	#set current project active
+	gcloud config set project $pname	
 	#enable api
 	gcloud services enable compute.googleapis.com
 	#add firewall
