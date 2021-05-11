@@ -94,7 +94,7 @@ cont (){
 	gcloud compute instance-groups managed create "${pname}-group-1-au" --region "australia-southeast1" \
 	--template "${pname}-template-au" --size 8
 	#wait until stable
-	gcloud compute instance-groups managed wait-until --stable "${fullname}-au" --timeout=60 --region="australia-southeast1"
+	gcloud compute instance-groups managed wait-until --stable "${pname}-group-1-au" --timeout=60 --region="australia-southeast1"
 	#set auto-scaling off
 	echo "Turning off autoscaling AU"
 	gcloud beta compute instance-groups managed set-autoscaling "${pname}-group-1-au" --region "australia-southeast1" \
@@ -105,7 +105,7 @@ cont (){
 	gcloud compute instance-groups managed create "${pname}-group-1-sg" --region "asia-southeast1" \
 	--template "${pname}-template-sg" --size 8
 	#wait until stable
-	gcloud compute instance-groups managed wait-until --stable "${fullname}-au" --timeout=60 --region="australia-southeast1"
+	gcloud compute instance-groups managed wait-until --stable "${pname}-group-1-sg" --timeout=60 --region="asia-southeast1"
 	#set auto-scaling off
 	echo "Turning off autoscaling AU"
 	gcloud beta compute instance-groups managed set-autoscaling "${pname}-group-1-sg" --region "asia-southeast1" \
@@ -178,7 +178,7 @@ default (){
 	gcloud compute instance-groups managed create "${fullname}-sg" --region "asia-southeast1" \
 	--template "${fullname}-tmp-sg" --size 8
 	#wait until stable
-	gcloud compute instance-groups managed wait-until --stable "${fullname}-au" --timeout=60 --region="australia-southeast1"
+	gcloud compute instance-groups managed wait-until --stable "${fullname}-sg" --timeout=60 --region="asia-southeast1"
 	#set auto-scaling off
 	echo "Turning off autoscaling SG"
 	gcloud beta compute instance-groups managed set-autoscaling "${fullname}-sg" --region "asia-southeast1" \
